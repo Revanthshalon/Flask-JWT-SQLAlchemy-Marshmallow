@@ -18,6 +18,9 @@ def create_app():
     db.init_app(app)
     ma.init_app(app)
     jwt.init_app(app)
+    Migrate(app, db)
+
+    from app.models.UserModel import User
 
     # Importing Blueprints
     from app.token import token

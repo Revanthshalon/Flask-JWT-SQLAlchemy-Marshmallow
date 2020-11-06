@@ -9,7 +9,7 @@ class User(db.Model):
     # Defining the table structure
     userid = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
-    email = db.Column(db.String(100), uniqueTrue, index=True, nullable=False)
+    email = db.Column(db.String(100), unique=True, index=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     user_role = db.Column(db.SmallInteger, nullable=False)
 
@@ -30,3 +30,6 @@ class UserSchema(ma.SQLAlchemySchema):
         model = User
     
     userid = ma.auto_field()
+    username = ma.auto_field()
+    email = ma.auto_field()
+    user_role = ma.auto_field()
