@@ -95,11 +95,11 @@ def refresh():
 @token.route('/logout', methods=['DELETE'])
 @jwt_required
 def logout():
-    jti = get_raw_jwt()
+    jti = get_raw_jwt()['jti']
     try:
-        rt = RevokedToken(jti)
+        rt = RevokedToken(jti=jti)
         db.session.add(rt)
-        db.commit()
+        db.session.commit()
         resp = jsonify({
             'message':"succesfully logged out"
         })
@@ -113,11 +113,11 @@ def logout():
 @token.route('/logout2', methods=['DELETE'])
 @jwt_refresh_token_required
 def logout2():
-    jti = get_raw_jwt()
+    jti = get_raw_jwt()['jti']
     try:
-        rt = RevokedToken(jti)
+        rt = RevokedToken(jti=jti)
         db.session.add(rt)
-        db.commit()
+        db.session.commit()
         resp = jsonify({
             'message':"succesfully logged out"
         })
