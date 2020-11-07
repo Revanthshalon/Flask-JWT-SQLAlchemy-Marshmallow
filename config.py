@@ -14,6 +14,8 @@ class ProductionConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     JWT_ALGORITHM = "HS512"
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(seconds=180)
+    JWT_BLACKLIST_ENABLED = True
+    JWT_BLACKLIST_TOKEN_CHECKS = ['access', 'refresh']
 
 
 class DevelopmentConfig(BaseConfig):
@@ -24,6 +26,8 @@ class DevelopmentConfig(BaseConfig):
     # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://username@password@localhost:port/databasename' Uncomment this for the using the mysql database
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(seconds=180)
     JWT_ALGORITHM = 'HS512'
+    JWT_BLACKLIST_ENABLED = True
+    JWT_BLACKLIST_TOKEN_CHECKS = ['access', 'refresh']
 
 
 app_config = {
@@ -33,6 +37,6 @@ app_config = {
 
 
 def init_app(app):
-    config_name = os.environ.get('FLASK_CONFIG')
+    config_name = os.environ.get('FLASK_ENV')
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('app.cfg')
