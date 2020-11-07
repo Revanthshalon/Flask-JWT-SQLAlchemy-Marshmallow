@@ -12,6 +12,8 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True, index=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     user_role = db.Column(db.SmallInteger, nullable=False)
+    created_date = db.Column(db.DateTime, nullable=False)
+    
 
     @property
     def password(self):
@@ -23,7 +25,6 @@ class User(db.Model):
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
-
     
 
 class UserSchema(ma.SQLAlchemySchema):

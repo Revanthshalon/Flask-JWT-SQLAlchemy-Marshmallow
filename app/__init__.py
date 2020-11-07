@@ -22,13 +22,14 @@ def create_app():
 
     from app.models.UserModel import User
     from app.models.RevokedToken import RevokedToken
+    from app.models.UploadModel import UploadModel
 
     # Importing Blueprints
     from app.token import token
-    from app.protected import protected
+    from app.dashboard import dashboard
 
     # Registring Blueprints
     app.register_blueprint(token, url_prefix="/token")
-    app.register_blueprint(protected, url_prefix='/protected')
+    app.register_blueprint(dashboard, url_prefix='/dashboard')
 
     return app
