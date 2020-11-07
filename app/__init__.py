@@ -27,9 +27,11 @@ def create_app():
     # Importing Blueprints
     from app.token import token
     from app.dashboard import dashboard
+    from app.analytics import analytics
 
     # Registring Blueprints
     app.register_blueprint(token, url_prefix="/token")
     app.register_blueprint(dashboard, url_prefix='/dashboard')
+    app.register_blueprint(analytics, url_prefix='/dashboard/analytics')
 
     return app
