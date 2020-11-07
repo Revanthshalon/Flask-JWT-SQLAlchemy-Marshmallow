@@ -21,6 +21,7 @@ def create_app():
     Migrate(app, db)
 
     from app.models.UserModel import User
+    from app.models.RevokedToken import RevokedToken
 
     # Importing Blueprints
     from app.token import token
