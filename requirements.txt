@@ -13,6 +13,7 @@ marshmallow==3.9.0
 marshmallow-sqlalchemy==0.24.0
 numpy==1.19.3
 pandas==1.1.4
+psycopg2==2.8.6
 PyJWT==1.7.1
 PyMySQL==0.10.1
 python-dateutil==2.8.1
